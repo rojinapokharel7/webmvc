@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout}">
+
+<body>
+
+<main layout:fragment="content" id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>General Tables</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">General</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Update Student</h5>
+
+                        <!-- General Form Elements -->
+                        <form th:object="${student}" th:action="@{/student/update}" method="post">
+                            <input id = "id" type="hidden" class="form-control" th:field="*{std_id}">
+                            <div class="row mb-3">
+                                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input id = "name" type="text" class="form-control" th:field="*{std_name}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="address" class="col-sm-2 col-form-label">Address</label>
+                                <div class="col-sm-10">
+                                    <input id = "address" type="text" class="form-control" th:field="*{std_address}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="contactNum" class="col-sm-2 col-form-label">ContactNum</label>
+                                <div class="col-sm-10">
+                                    <input id = "contactNum" type="text" class="form-control" th:field="*{std_contactNum}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="grade" class="col-sm-2 col-form-label">Grade</label>
+                                <div class="col-sm-10">
+                                    <input id = "grade" type="text" class="form-control" th:field="*{std_grade}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+
+                        </form><!-- End General Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+</body>
+
+</html>

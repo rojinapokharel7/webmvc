@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout}">
+
+<body>
+
+<main layout:fragment="content" id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>General Tables</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">General</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class = "row">
+                            <div class = "col-lg-6">
+                                <h5 class="card-title">Student List</h5>
+                            </div>
+                            <div class = "col-lg-6">
+                                <div class = "row">
+                                    &nbsp
+                                </div>
+                                <div class = "row">
+                                    <div class ="col-lg-9">
+                                    </div>
+                                    <div class ="col-lg-3">
+                                        <a th:href="@{/create-student}" class="btn btn-primary float-end">Add Student</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Contact No</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="student,iStat: ${listStudent}">
+                                <td th:text="${iStat.count}" />
+                                <td th:text="${student.std_name}" />
+                                <td th:text="${student.std_address}" />
+                                <td th:text="${student.std_contactNum}" />
+                                <td th:text="${student.std_grade}" />
+                                <td><a th:href="@{/edit-student/{id}(id=${student.std_id})}">Edit</a> |
+                                    <a class = "delete" th:href="@{/delete-student/{id}(id=${student.std_id})}">Delete</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+</body>
+<script type="text/javascript">
+     $(document).ready(function(){
+      $(".delete").click(function(){
+        if (!confirm("Do you want to delete")){
+          return false;
+        }
+      });
+    });
+</script>
+
+</html>
